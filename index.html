@@ -35,19 +35,23 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="role">Email</label>
-                            <input type="text" class="form-control" id="role">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber">
                         </div>
 
-                        <div class="form-group">
-                            <label for="age">Age</label>
-                            <input type="text" class="form-control" id="age">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="force-points">Party of</label>
-                            <input type="text" class="form-control" id="force-points">
-                        </div>
+                        <label for="partyOf">Party Of</label>
+                            <select class="form-control" id="partyOf">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
 
                     </form>
                     <br>
@@ -67,9 +71,8 @@
         event.preventDefault();
         var newCharacter = {
             name: $("#name").val().trim(),
-            role: $("#role").val().trim(),
-            age: $("#age").val().trim(),
-            forcePoints: $("#force-points").val().trim()
+            phoneNumber: $("#phoneNumber").val().trim(),
+            partyOf: $("#partyOf").val().trim()
         };
 
         // Question: What does this code do??
