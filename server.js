@@ -13,17 +13,14 @@ var path = require("path");
 var app = express();
 
 var PORT = process.env.PORT || 3000;
-=======
 
-
+var customers = [];
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-
-
 
 // Routes
 // =============================================================
@@ -33,37 +30,37 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/add", function(req, res) {
+/*app.get("/add", function(req, res) {
     res.sendFile(path.join(__dirname, "add.html"));
-});
-/*
-// Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function(req, res) {
-    var chosen = req.params.characters;
+});*/
+
+// Search for Specific customers (or all customers) - provides JSON
+app.get("/api/:customers?", function(req, res) {
+    var chosen = req.params.customers;
 
     if (chosen) {
         console.log(chosen);
 
-        for (var i = 0; i < characters.length; i++) {
-            if (chosen === characters[i].routeName) {
-                res.json(characters[i]);
+        for (var i = 0; i < customers.length; i++) {
+            if (chosen === customers[i].routeName) {
+                res.json(customers[i]);
             }
         }
         res.json(false);
     }
-    res.json(characters);
-});*/
+    res.json(customers);
+});
 
-// Create New Characters - takes in JSON input
+// Create New customers - takes in JSON input
 app.post("/api/add?", function(req, res) {
-    var newcharacter = req.body;
-    newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+    var newcustomers = req.body;
+    newcustomers.routeName = newcustomers.name.replace(/\s+/g, "").toLowerCase();
 
-    console.log(newcharacter);
+    console.log(newcustomers);
 
-    characters.push(newcharacter);
+    customers.push(newcustomers);
 
-    res.json(newcharacter);
+    res.json(newcustomers);
 });
 
 // Starts the server to begin listening
