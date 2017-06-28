@@ -30,13 +30,13 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "view.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/add", function(req, res) {
     res.sendFile(path.join(__dirname, "add.html"));
 });
-
+/*
 // Search for Specific Character (or all characters) - provides JSON
 app.get("/api/:characters?", function(req, res) {
     var chosen = req.params.characters;
@@ -46,16 +46,16 @@ app.get("/api/:characters?", function(req, res) {
 
         for (var i = 0; i < characters.length; i++) {
             if (chosen === characters[i].routeName) {
-                return res.json(characters[i]);
+                res.json(characters[i]);
             }
         }
-        return res.json(false);
+        res.json(false);
     }
-    return res.json(characters);
-});
+    res.json(characters);
+});*/
 
 // Create New Characters - takes in JSON input
-app.post("/api/new", function(req, res) {
+app.post("/api/add?", function(req, res) {
     var newcharacter = req.body;
     newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
